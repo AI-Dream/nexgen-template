@@ -14,10 +14,10 @@ COPY . /usr/src/nexgen-frontend/
 RUN npm install
 RUN npm run build
 
-EXPOSE 5555
+EXPOSE 3000
 
 ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=5555
+ENV NUXT_PORT=3000
 
 CMD [ "npm", "start"]
 
