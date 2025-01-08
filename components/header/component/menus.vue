@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="(item,i) in menu_data" :key="i" :class="`${item.drop_down?'has-dropdown':item.mega_menu?'has-dropdown has-mega-menu':''}`">
+    <li v-for="(item,i) in filteredMenuData" :key="i" :class="`${item.drop_down?'has-dropdown':item.mega_menu?'has-dropdown has-mega-menu':''}`">
       <nuxt-link :href="item.link">{{item.title}}</nuxt-link>
       <div v-if="item.home_pages" class="home-menu tp-submenu tp-mega-menu">
         <div class="row row-cols-1 row-cols-lg-4 row-cols-xl-4">
@@ -82,4 +82,10 @@
 
 <script setup lang="ts">
 import { menu_data } from "@/data/menu-data";
+
+const selectedPackage = usePackage();
+
+const filteredMenuData = computed(() => {
+  return menu_data.filter(item => item.package && item.package.includes(selectedPackage.value));
+});
 </script>

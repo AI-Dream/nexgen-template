@@ -1,5 +1,6 @@
 export interface IMenuItem {
   id: number;
+  package?: Array<any>;
   link: string;
   title: string;
   mega_menu?: boolean;

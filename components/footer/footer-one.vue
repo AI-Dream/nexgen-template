@@ -9,7 +9,7 @@
                 <div class="tp-footer-widget-content">
                   <div class="tp-footer-logo">
                     <nuxt-link href="/">
-                      <img src="/img/logo/logo.svg" alt="logo">
+                        <img src="/img/logo/logo.png" alt="logo" style="width: 160px;"/>
                     </nuxt-link>
                   </div>
                   <p class="tp-footer-desc">We are a team of designers and developers that create high quality WordPress

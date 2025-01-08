@@ -8,7 +8,7 @@
                   <div class="tp-footer-widget footer-col-4-1 mb-50">
                       <div class="tp-footer-logo">
                         <nuxt-link href="/">
-                            <img src="/img/logo/logo.svg" alt="logo">
+                            <img src="/img/logo/logo.png" alt="logo" style="width: 160px;">
                         </nuxt-link>
                       </div>
                       <div class="tp-footer-widget-content">

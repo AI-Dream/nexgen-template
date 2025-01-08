@@ -86,11 +86,11 @@
       <nuxt-link :href="`/product-details/${product.id}`" class="tp-product-details-buy-now-btn w-100 text-center">Buy Now</nuxt-link>
     </div>
     <div class="tp-product-details-action-sm">
-      <button @click="compareStore.add_compare_product(product)" type="button" class="tp-product-details-action-sm-btn">
+      <button v-if="selectedPackage === 'L'" @click="compareStore.add_compare_product(product)" type="button" class="tp-product-details-action-sm-btn">
           <svg-compare-3/>
           Compare
       </button>
-      <button  @click="wishlistStore.add_wishlist_product(product)" type="button" class="tp-product-details-action-sm-btn">
+      <button @click="wishlistStore.add_wishlist_product(product)" type="button" class="tp-product-details-action-sm-btn">
           <svg-wishlist-3/>
           Add Wishlist
       </button>
@@ -149,6 +149,7 @@ const compareStore = useCompareStore();
 const wishlistStore = useWishlistStore();
 const productStore = useProductStore();
 const cartStore = useCartStore();
+const selectedPackage = usePackage();
 // props
 const props = withDefaults(defineProps<{product:IProduct;isShowBottom?:boolean}>(), {
   isShowBottom:true,

@@ -16,7 +16,7 @@
       </nuxt-link>
     </div>
     <div class="tp-header-action d-flex align-items-center ml-50">
-      <div class="tp-header-action-item d-none d-lg-block">
+      <div v-if="selectedPackage === 'L'"  class="tp-header-action-item d-none d-lg-block">
         <nuxt-link href="/compare" class="tp-header-action-btn">
           <svg-compare />
         </nuxt-link>
@@ -54,4 +54,5 @@ import { useUtilityStore} from '@/pinia/useUtilityStore';
 const cartStore = useCartStore();
 const wishlistStore = useWishlistStore();
 const utilsStore = useUtilityStore();
+const selectedPackage = usePackage();
 </script>

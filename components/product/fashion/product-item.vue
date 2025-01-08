@@ -56,7 +56,7 @@
             </span>
           </button>
 
-          <button
+          <button v-if="selectedPackage === 'L'"
             @click="compareStore.add_compare_product(item)"
             type="button"
             :class="`tp-product-action-btn-2 tp-product-add-to-compare-btn ${isItemInCompare(item) ? 'active': ''}`"
@@ -109,6 +109,7 @@ const compareStore = useCompareStore();
 const cartStore = useCartStore();
 const wishlistStore = useWishlistStore();
 const utilityStore = useUtilityStore();
+const selectedPackage = usePackage();
 
 function isItemInWishlist(product: IProduct) {
   return wishlistStore.wishlists.some((prd) => prd.id === product.id);

@@ -3,7 +3,7 @@
     <header-package-bar></header-package-bar>
     <div class="tp-header-area p-relative z-index-11">
       <!-- header top start  -->
-      <div class="tp-header-top black-bg p-relative z-index-1 d-none d-md-block">
+      <!-- <div class="tp-header-top black-bg p-relative z-index-1 d-none d-md-block">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-6">
@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- header main start -->
       <div class="tp-header-main tp-header-sticky">
@@ -30,7 +30,7 @@
             <div class="col-xl-2 col-lg-2 col-md-4 col-6">
               <div class="logo">
                 <nuxt-link href="/">
-                  <img src="/img/logo/logo.svg" alt="logo" />
+                  <img src="/img/logo/logo.png" alt="logo" style="width: 250px;"/>
                 </nuxt-link>
               </div>
             </div>
@@ -94,7 +94,7 @@
             <div class="col-xl-3 col-lg-3 col-md-3 col-6">
               <div class="logo">
                 <nuxt-link href="/">
-                  <img src="/img/logo/logo.svg" alt="logo">
+                  <img src="/img/logo/logo.png" alt="logo" style="width: 160px;">
                 </nuxt-link>
               </div>
             </div>

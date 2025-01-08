@@ -1,8 +1,9 @@
 <template>
   <header>
+    <header-package-bar></header-package-bar>
+
     <div :class="`tp-header-area tp-header-style-${style_2 ? 'primary' : 'darkRed'} tp-header-height`">
-      <!-- header top start  -->
-      <div class="tp-header-top-2 p-relative z-index-11 tp-header-top-border d-none d-md-block">
+      <!-- <div class="tp-header-top-2 p-relative z-index-11 tp-header-top-border d-none d-md-block">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-6">
@@ -25,14 +26,12 @@
             </div>
             <div class="col-md-6">
               <div class="tp-header-top-right tp-header-top-black d-flex align-items-center justify-content-end">
-                <!-- header top menu start -->
                 <header-component-top-menu />
-                <!-- header top menu end -->
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- header bottom start -->
       <div id="header-sticky" :class="`tp-header-bottom-2 tp-header-sticky ${isSticky ? 'header-sticky' : ''}`">
@@ -42,7 +41,7 @@
               <div class="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6">
                 <div class="logo">
                   <nuxt-link href="/">
-                    <img src="/img/logo/logo.svg" alt="logo">
+                    <img src="/img/logo/logo.png" alt="logo" style="width: 160px;">
                   </nuxt-link>
                 </div>
               </div>
@@ -67,7 +66,7 @@
                   </div>
                   <div class="tp-header-action d-flex align-items-center ml-30">
                     <div class="tp-header-action-item d-none d-lg-block">
-                      <nuxt-link href="/compare" class="tp-header-action-btn">
+                      <nuxt-link v-if="selectedPackage === 'L'" href="/compare" class="tp-header-action-btn">
                         <svg-compare />
                       </nuxt-link>
                     </div>
@@ -117,6 +116,7 @@ import { useUtilityStore } from '@/pinia/useUtilityStore';
 const cartStore = useCartStore();
 const wishlistStore = useWishlistStore();
 const utilsStore = useUtilityStore();
+const selectedPackage = usePackage();
 
 defineProps<{style_2?:boolean}>()
 

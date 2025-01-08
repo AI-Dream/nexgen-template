@@ -9,7 +9,7 @@
               <div class="logo">
                 <nuxt-link href="/">
                   <img class="logo-light" src="/img/logo/logo-white.svg" alt="logo">
-                  <img class="logo-dark" src="/img/logo/logo.svg" alt="logo">
+                  <img class="logo-dark" src="/img/logo/logo.png" alt="logo" style="width: 160px;">
                 </nuxt-link>
               </div>
             </div>
