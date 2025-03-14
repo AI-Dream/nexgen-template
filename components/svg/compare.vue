@@ -1,5 +1,4 @@
 <template>
-  <div class="bounce">
     <svg
       width="20"
       height="19"
@@ -36,23 +35,10 @@
         stroke-linejoin="round"
       />
     </svg>
-  </div>
 </template>
 
 <script setup lang="ts"></script>
 
 <style scoped>
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(2px);
-  }
-  50% {
-    transform: translateY(-2px);
-  }
-}
 
-.bounce {
-  display: inline-block;
-  animation: bounce 0.75s infinite;
-}
 </style>

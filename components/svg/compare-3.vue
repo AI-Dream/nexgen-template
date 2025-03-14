@@ -1,5 +1,4 @@
 <template>
-  <div class="bounce">     
     <svg
       width="14"
       height="16"
@@ -40,21 +39,8 @@
         stroke-linejoin="round"
       />
     </svg>
-  </div>
 </template>
 
 <style scoped>
-@keyframes bounce {
-  0%, 100% {
-    transform: scale(0.9);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
 
-.bounce {
-  display: inline-block;
-  animation: bounce 0.75s infinite;
-}
 </style>
