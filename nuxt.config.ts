@@ -33,6 +33,12 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: {
+    API_SECRET: process.env.NEXT_API_SECRET,
+    public: {
+      API_KEY: process.env.NEXT_API_KEY,
+    }
+  },
   css: [
     "@/assets/css/font-awesome-pro.css",
     "@/assets/css/flaticon_shofy.css",

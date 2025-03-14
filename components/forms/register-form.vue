@@ -3,7 +3,7 @@
     <div class="tp-login-input-wrapper">
       <div class="tp-login-input-box">
         <div class="tp-login-input">
-          <input id="name" type="text" placeholder="Shahnewaz Sakil" v-bind="name" />
+          <input id="name" type="text" placeholder="Benjamin Buckley" v-bind="name" />
         </div>
         <div class="tp-login-input-title">
           <label for="name">Your Name</label>
@@ -48,16 +48,37 @@
       </div>
       <err-message :msg="errors.password" />
       </div>
+      <div class="tp-login-input-box">
+        <div class="p-relative">
+          <div class="tp-login-input">
+          <input
+            id="tp_confirm_password"
+            type="password"
+            name="confirmPassword"
+            placeholder="Min. 6 character"
+            v-bind="confirmPassword"
+          />
+        </div>
+        <div class="tp-login-input-title">
+          <label for="tp_confirm_password">Re - Password</label>
+        </div>
+      </div>
+      <err-message :msg="errors.confirmPassword" />
+      </div>
     </div>
-    <div class="tp-login-bottom">
+    <div class="tp-login-bottom mt-30">
       <button type="submit" class="tp-login-btn w-100">Sign Up</button>
     </div>
   </form>
 </template>
 
 <script setup lang="ts"> 
+import { useUserStore } from '@/pinia/useUserStore';
 import { useForm } from 'vee-validate';
 import * as yup from 'yup';
+
+const userStore = useUserStore();
+const { credentials } = useUserStore()
 
 let showPass = ref<boolean>(false);
 
@@ -65,19 +86,26 @@ interface IFormValues {
   name?: string | null;
   email?: string | null;
   password?: string | null;
+  confirmPassword?: string | null;
 }
+
 const { errors, handleSubmit, defineInputBinds,resetForm } = useForm<IFormValues>({
   validationSchema: yup.object({
     name: yup.string().required().label("Name"),
     email: yup.string().required().email().label("Email"),
-    password: yup.string().required().min(6).label("Password")
+    password: yup.string().required().min(6).label("Password"),
+    confirmPassword: yup.string().oneOf([yup.ref('password')], 'Passwords must match').required().min(6).label("Re - Password")
   }),
 });
 
 const onSubmit = handleSubmit(values => {
   alert(JSON.stringify(values, null, 2));
-  resetForm()
+  resetForm();
 });
+
+const createUser = async () => {
+
+}
 
 const togglePasswordVisibility = () => {
   showPass.value = !showPass.value;
@@ -86,4 +114,5 @@ const togglePasswordVisibility = () => {
 const name = defineInputBinds('name');
 const email = defineInputBinds('email');
 const password = defineInputBinds('password');
+const confirmPassword = defineInputBinds('confirmPassword');
 </script>

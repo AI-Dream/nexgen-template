@@ -14,7 +14,7 @@
       <!-- feature area end -->
 
       <!-- product area start -->
-      <product-electronics-top-items />
+      <product-electronics-top-items v-if="newProduct != null" :newProduct="newProduct"/>
       <!-- product area end -->
 
       <!-- banner area start -->
@@ -57,8 +57,35 @@
 </template>
 
 <script setup lang="ts">
+import { useUserStore } from '@/pinia/useUserStore';
+const userStore = useUserStore();
+const newProduct = ref(null);
 definePageMeta({
   layout: false,
 });
-useSeoMeta({ title: "Shofy - Multipurpose eCommerce Vue Nuxt 3 Template" });
+
+const getNewProduct = async () => {
+  await $fetch(`${userStore.credentials.api_url}/api/backend_2/search/product/filter`, {
+    method: 'POST',
+    body: {
+      "role_user": "ext_buyer",
+      "company_id": "-1",
+      "limit": 10,
+      "page": 1,
+      "category": "",
+      "seller_shop_id": 86,
+      "orderBy": "",
+      "status_product": ""
+    },
+    onResponse({response}){
+      if (response._data){
+        newProduct.value = response._data
+      }
+    }
+  })
+}
+
+onMounted(() => {
+  getNewProduct();
+})
 </script>

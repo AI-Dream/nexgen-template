@@ -5,7 +5,7 @@
         <div class="tp-login-input">
           <input
             id="email"
-            type="email"
+            type="text"
             placeholder="shofy@mail.com"
             v-bind="email"
           />
@@ -61,8 +61,11 @@
 </template>
 
 <script setup lang="ts">
+import { useUserStore } from "@/pinia/useUserStore";
 import { useForm } from "vee-validate";
 import * as yup from "yup";
+
+const { credentials, setUserData } = useUserStore();
 
 let showPass = ref<boolean>(false);
 
@@ -73,15 +76,32 @@ interface IFormValues {
 const { errors, handleSubmit, defineInputBinds, resetForm } =
   useForm<IFormValues>({
     validationSchema: yup.object({
-      email: yup.string().required().email().label("Email"),
+      email: yup.string().required().label("Email"),
       password: yup.string().required().min(6).label("Password"),
     }),
   });
 
 const onSubmit = handleSubmit((values) => {
-  alert(JSON.stringify(values, null, 2));
-  resetForm();
+  handleLogin(values);
 });
+
+const handleLogin = async (values: IFormValues) => {
+  await $fetch(`${credentials.api_url}/api/backend/api/erp/login`,{
+    method: 'POST',
+    headers: credentials.api_key,
+    body: {
+      username: values.email,
+      password: values.password,
+    },
+    onResponse({response}){
+      if (response._data.code === 200) {
+        setUserData(response._data.data)
+        localStorage.setItem('accessToken', response._data.data.access_token);
+        navigateTo('/')        
+      }
+    }
+  })
+}
 
 const togglePasswordVisibility = () => {
   showPass.value = !showPass.value;
