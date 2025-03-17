@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-6">
               <div class="profile__main-logout text-sm-end">
-                  <nuxt-link href="/login" class="tp-logout-btn">Logout</nuxt-link>
+                  <nuxt-link href="/login" class="tp-logout-btn" @click="userStrore.logoutUser()">Logout</nuxt-link>
               </div>
             </div>
         </div>
@@ -76,5 +76,6 @@
 </template>
 
 <script setup lang="ts">
-
+import { useUserStore } from '@/pinia/useUserStore';
+const userStrore = useUserStore()
 </script>
