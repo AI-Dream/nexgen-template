@@ -1,23 +1,23 @@
 import { defineStore } from "pinia";
+import { useCredential } from "../composables/useCredential";
 
 export const useUserStore = defineStore("user", () => {
-  const config = useRuntimeConfig();
-  // const token = ref(localStorage.getItem('accessToken')); 
 
-  const credentials = ref({
-    config : config,
-    api_url : 'https://uatinet-eprocurement.one.th',
-    api_key : {
-        'api-key': config.public.API_KEY || 'undefined',
-        'api-secret': config.API_SECRET || 'undefined'
-    }
-  });
-
+  const credentials = useCredential()
   const userData = ref();
 
   const setUserData = (data: any) => {
     userData.value = { ...data };
   };
+
+  const deleteUserData = () => {
+    userData.value = null;
+  }
+
+  const logoutUser = () => {
+    deleteUserData();
+    localStorage.removeItem('accessToken');
+  }
 
   const getUserData = async () => {
     const accessToken = ref(localStorage.getItem('accessToken')); 
@@ -42,6 +42,8 @@ export const useUserStore = defineStore("user", () => {
     userData,
     setUserData,
     getUserData,
+    deleteUserData,
+    logoutUser,
   };
 });
 
