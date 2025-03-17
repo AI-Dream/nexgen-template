@@ -1,5 +1,5 @@
 <template>
-  <section class="tp-product-area pb-55">
+  <section class="tp-product-area pb-55 mt-55">
     <div class="container">
       <div class="row align-items-end">
         <div class="col-xl-5 col-lg-6 col-md-5">
@@ -30,8 +30,8 @@
               <!-- <div v-for="(item,i) in filteredProducts" :key="i" class="col-xl-3 col-lg-3 col-sm-6">
                 <ProductElectronicsItem :item="item" />
               </div> -->
-              <div v-for="(item,i) in newProduct?.query_result" :key="i" class="col-xl-3 col-lg-3 col-sm-6">
-                 <pre>{{ item }}</pre>
+              <div v-if="newProductStatus === false" v-for="(item,i) in newProduct?.query_result" :key="i" class="col-xl-3 col-lg-3 col-sm-6">
+                <ProductElectronicsItem :item="item" />
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@ import product_data from '@/data/product-data';
 
 let active_tab = ref('New')
 
-const props = defineProps(['newProduct'])
+const props = defineProps(['newProduct', 'newProductStatus'])
 const tabs = ["New", "Featured", "Top Sellers"];
 // handleActiveTab
 const handleActiveTab = (tab: string) => {
