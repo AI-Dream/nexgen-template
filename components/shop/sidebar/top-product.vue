@@ -36,7 +36,7 @@
             <nuxt-link :href="`/product-details/${item.product.id}`">{{item.product.title}}</nuxt-link>
           </h4>
           <div class="tp-shop-widget-product-price-wrapper">
-            <span class="tp-shop-widget-product-price">${{item.product.price.toFixed(2)}}</span>
+            <span class="tp-shop-widget-product-price">{{formatPrice(item.product.price)}}</span>
           </div>
         </div>
       </div>

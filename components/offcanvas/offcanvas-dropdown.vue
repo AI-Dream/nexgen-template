@@ -9,7 +9,7 @@
         <!-- status -->
         <div class="tp-shop-widget mb-50">
           <h3 class="tp-shop-widget-title">Product Status</h3>
-          <shop-sidebar-filter-status :filter_dropdown="true" />
+          <shop-sidebar-filter-status />
         </div>
       </div>
 
@@ -17,7 +17,7 @@
         <!-- categories -->
         <div class="tp-shop-widget mb-50">
           <h3 class="tp-shop-widget-title">Categories</h3>
-          <shop-sidebar-filter-categories :filter_dropdown="true" />
+          <shop-sidebar-filter-categories />
         </div>
       </div>
 
@@ -25,9 +25,9 @@
         <!-- color -->
         <div class="tp-shop-widget mb-50">
           <h3 class="tp-shop-widget-title">Filter by Price</h3>
-          <shop-sidebar-price-filter :filter_dropdown="true" />
+          <shop-sidebar-price-filter />
         </div>
-        <shop-sidebar-reset-filter :filter_dropdown="true" />
+        <shop-sidebar-reset-filter />
       </div>
 
       <div class="col-lg-3">

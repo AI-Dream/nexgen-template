@@ -60,10 +60,10 @@
       </h3>
       <div class="tp-category-price-wrapper-4">
         <span v-if="item.discount > 0" class="tp-category-price-4">
-          ${{(Number(item.price) - (Number(item.price) * Number(item.discount)) / 100).toFixed(2)}}
+          {{formatPrice((Number(item.price) - (Number(item.price) * Number(item.discount)) / 100))}}
         </span>
         <span v-else class="tp-category-price-4">
-          ${{item.price.toFixed(2)}}
+          {{formatPrice(item.price)}}
         </span>
         <div class="tp-category-add-to-cart">
           <button v-if="!isItemInCart(item)" @click="cartStore.addCartProduct(item)" class="tp-category-add-to-cart-4">

@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   modules: [
     [
       '@pinia/nuxt',
@@ -12,6 +13,7 @@ export default defineNuxtConfig({
       },
     ],
   ],
+
   app: {
     head: {
       title: "Shofy - Multipurpose eCommerce Vue Nuxt 3 Template",
@@ -24,6 +26,7 @@ export default defineNuxtConfig({
       ],
     }
   },
+
   vite: {
     css: {
       preprocessorOptions: {
@@ -33,16 +36,12 @@ export default defineNuxtConfig({
       },
     },
   },
-  runtimeConfig: {
-    API_SECRET: process.env.NEXT_API_SECRET,
-    public: {
-      API_KEY: process.env.NEXT_API_KEY,
-    }
-  },
+
   css: [
     "@/assets/css/font-awesome-pro.css",
     "@/assets/css/flaticon_shofy.css",
     "@/assets/scss/main.scss",
   ],
-  
+
+  compatibilityDate: "2025-01-27",
 })

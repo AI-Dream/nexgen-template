@@ -28,12 +28,12 @@
     <!-- price -->
     <div class="tp-product-details-price-wrapper mb-20">
       <div v-if="product.discount > 0">
-          <span class="tp-product-details-price old-price">${{ product.price }}</span>
+          <span class="tp-product-details-price old-price">{{ formatPrice(product.price,false) }}</span>
           <span class="tp-product-details-price new-price">
-            ${{(Number(product.price) - (Number(product.price) * Number(product.discount)) / 100).toFixed(2)}}
+            {{formatPrice((Number(product.price) - (Number(product.price) * Number(product.discount)) / 100))}}
           </span>
         </div>
-      <span v-else class="tp-product-details-price old-price">${{ product.price.toFixed(2) }}</span>
+      <span v-else class="tp-product-details-price old-price">{{ formatPrice(product.price) }}</span>
     </div>
 
     <!-- variations -->
@@ -86,11 +86,11 @@
       <nuxt-link :href="`/product-details/${product.id}`" class="tp-product-details-buy-now-btn w-100 text-center">Buy Now</nuxt-link>
     </div>
     <div class="tp-product-details-action-sm">
-      <button v-if="selectedPackage === 'L'" @click="compareStore.add_compare_product(product)" type="button" class="tp-product-details-action-sm-btn">
+      <button @click="compareStore.add_compare_product(product)" type="button" class="tp-product-details-action-sm-btn">
           <svg-compare-3/>
           Compare
       </button>
-      <button @click="wishlistStore.add_wishlist_product(product)" type="button" class="tp-product-details-action-sm-btn">
+      <button  @click="wishlistStore.add_wishlist_product(product)" type="button" class="tp-product-details-action-sm-btn">
           <svg-wishlist-3/>
           Add Wishlist
       </button>
@@ -149,7 +149,6 @@ const compareStore = useCompareStore();
 const wishlistStore = useWishlistStore();
 const productStore = useProductStore();
 const cartStore = useCartStore();
-const selectedPackage = usePackage();
 // props
 const props = withDefaults(defineProps<{product:IProduct;isShowBottom?:boolean}>(), {
   isShowBottom:true,

@@ -212,8 +212,8 @@ const product_data: IProduct[] = [
       },
     ],
     offerDate: {
-      startDate: "2024-11-15T18:00:00.000Z",
-      endDate: "2025-01-19T18:00:00.000Z",
+      startDate: "2025-01-15T18:00:00.000Z",
+      endDate: "2025-11-19T18:00:00.000Z",
     },
     featured: false,
     sellCount: 2,
@@ -848,8 +848,8 @@ const product_data: IProduct[] = [
       },
     ],
     offerDate: {
-      startDate: "2024-10-11T18:00:00.000Z",
-      endDate: "2025-02-11T19:00:00.000Z",
+      startDate: "2025-02-11T18:00:00.000Z",
+      endDate: "2026-02-11T19:00:00.000Z",
     },
     featured: false,
     sellCount: 0,
@@ -1162,8 +1162,8 @@ const product_data: IProduct[] = [
       },
     ],
     offerDate: {
-      startDate: "2024-11-24T18:00:00.000Z",
-      endDate: "2025-03-15T18:00:00.000Z",
+      startDate: "2025-02-24T18:00:00.000Z",
+      endDate: "2026-03-15T18:00:00.000Z",
     },
     featured: true,
     sellCount: 0,
@@ -1345,8 +1345,8 @@ const product_data: IProduct[] = [
       },
     ],
     offerDate: {
-      startDate: "2024-10-29T18:00:00.000Z",
-      endDate: "2024-04-20T18:00:00.000Z",
+      startDate: "2025-01-29T18:00:00.000Z",
+      endDate: "2025-12-20T18:00:00.000Z",
     },
     featured: false,
     sellCount: 0,

@@ -53,7 +53,7 @@
                 >
                   <div class="tp-product-gadget-banner-content">
                     <span class="tp-product-gadget-banner-price">
-                      Only ${{ item.price.toFixed(2) }}
+                      Only {{ formatPrice(item.price) }}
                     </span>
                     <h3 class="tp-product-gadget-banner-title">
                       <nuxt-link href="/shop">

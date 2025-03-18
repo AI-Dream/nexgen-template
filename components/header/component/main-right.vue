@@ -3,7 +3,7 @@
     class="tp-header-main-right d-flex align-items-center justify-content-end"
   >
     <div class="tp-header-login d-none d-lg-block">
-      <nuxt-link v-if="userStore.userData" href="/profile" class="d-flex align-items-center">
+      <nuxt-link href="/profile" class="d-flex align-items-center">
         <div class="tp-header-login-icon">
           <span>
             <SvgUser />
@@ -11,22 +11,12 @@
         </div>
         <div class="tp-header-login-content d-none d-xl-block">
           <span>Hello, Sign In</span>
-          <h5 class="tp-header-login-title">{{ userStore.userData.username }}</h5>
-        </div>
-      </nuxt-link>
-      <nuxt-link v-else href="/login" class="d-flex align-items-center">
-        <div class="tp-header-login-icon">
-          <span>
-            <SvgUser />
-          </span>
-        </div>
-        <div>
-            <span class="tp-header-login-title">Login</span>
+          <h5 class="tp-header-login-title">Your Account</h5>
         </div>
       </nuxt-link>
     </div>
     <div class="tp-header-action d-flex align-items-center ml-50">
-      <div v-if="selectedPackage === 'L'"  class="tp-header-action-item d-none d-lg-block">
+      <div class="tp-header-action-item d-none d-lg-block">
         <nuxt-link href="/compare" class="tp-header-action-btn">
           <svg-compare />
         </nuxt-link>
@@ -57,14 +47,11 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from '@/pinia/useUserStore';
 import { useCartStore } from '@/pinia/useCartStore';
 import { useWishlistStore } from '@/pinia/useWishlistStore';
 import { useUtilityStore} from '@/pinia/useUtilityStore';
 
-const userStore = useUserStore(); 
 const cartStore = useCartStore();
 const wishlistStore = useWishlistStore();
 const utilsStore = useUtilityStore();
-const selectedPackage = usePackage();
 </script>

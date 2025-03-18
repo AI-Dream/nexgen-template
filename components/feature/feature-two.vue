@@ -38,7 +38,7 @@
               </div>
               <div class="tp-feature-content-2">
                 <h3 class="tp-feature-title-2">Member Discount</h3>
-                <p>On every order over $140.00</p>
+                <p>On every order over {{formatPrice(140)}}</p>
               </div>
             </div>
           </div>

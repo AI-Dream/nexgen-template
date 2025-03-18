@@ -3,7 +3,6 @@ import { type IMenuItem, type IMobileType } from "@/types/menu-d-type";
 export const menu_data:IMenuItem[] = [
   {
     id:1,
-    package: ['S','M','L'],
     link:'/',
     title:'Home',
     mega_menu:true,
@@ -20,23 +19,22 @@ export const menu_data:IMenuItem[] = [
         img:'/img/menu/menu-home-2.jpg',
         link:'/home-2'
       },
-      // {
-      //   id:3,
-      //   title:'Beauty',
-      //   img:'/img/menu/menu-home-3.jpg',
-      //   link:'/home-3'
-      // },
-      // {
-      //   id:4,
-      //   title:'Electronics',
-      //   img:'/img/menu/menu-home-4.jpg',
-      //   link:'/home-4'
-      // },
+      {
+        id:3,
+        title:'Beauty',
+        img:'/img/menu/menu-home-3.jpg',
+        link:'/home-3'
+      },
+      {
+        id:4,
+        title:'Electronics',
+        img:'/img/menu/menu-home-4.jpg',
+        link:'/home-4'
+      },
     ]
   },
   {
     id:2,
-    package: ['M','L'],
     link:'/shop',
     title:'Shop',
     mega_menu:true,
@@ -45,14 +43,14 @@ export const menu_data:IMenuItem[] = [
         link:'/shop',
         title:'Shop Pages',
         list_menus:[
-          {title:'All Product',link:'/shop'},
-          // {title:'Shop Categories',link:'/shop-categories'},
-          // {title:'List Layout',link:'/shop-list'},
-          // {title:'Full width Layout',link:'/shop-full-width'},
-          // {title:'1600px Layout',link:'/shop-1600'},
-          // {title:'Left Sidebar',link:'/shop'},
-          // {title:'Right Sidebar',link:'/shop-right-sidebar'},
-          // {title:'Hidden Sidebar',link:'/shop-no-sidebar'},
+          {title:'Grid Layout',link:'/shop'},
+          {title:'Shop Categories',link:'/shop-categories'},
+          {title:'List Layout',link:'/shop-list'},
+          {title:'Full width Layout',link:'/shop-full-width'},
+          {title:'1600px Layout',link:'/shop-1600'},
+          {title:'Left Sidebar',link:'/shop'},
+          {title:'Right Sidebar',link:'/shop-right-sidebar'},
+          {title:'Hidden Sidebar',link:'/shop-no-sidebar'},
         ]
       },
       {
@@ -60,13 +58,13 @@ export const menu_data:IMenuItem[] = [
         title:'Features',
         list_menus:[
           {title:'Filter Dropdown',link:'/shop-filter-dropdown'},
-          // {title:'Filters Offcanvas',link:'/shop-filter-offcanvas'},
-          // {title:'Filters Sidebar',link:'/shop'},
-          // {title:'Load More button',link:'/shop-load-more'},
-          // {title:'1600px Layout',link:'/shop-1600'},
-          // {title:'Collections list',link:'/shop-list'},
-          // {title:'Hidden search',link:'/shop'},
-          // {title:'Search Full screen',link:'/shop'},
+          {title:'Filters Offcanvas',link:'/shop-filter-offcanvas'},
+          {title:'Filters Sidebar',link:'/shop'},
+          {title:'Load More button',link:'/shop-load-more'},
+          {title:'1600px Layout',link:'/shop-1600'},
+          {title:'Collections list',link:'/shop-list'},
+          {title:'Hidden search',link:'/shop'},
+          {title:'Search Full screen',link:'/shop'},
         ]
       },
       {
@@ -74,86 +72,83 @@ export const menu_data:IMenuItem[] = [
         title:'Hover Style',
         list_menus:[
           {title:'Hover Style 1',link:'/shop'},
-          // {title:'Hover Style 2',link:'/shop'},
-          // {title:'Hover Style 3',link:'/shop'},
-          // {title:'Hover Style 4',link:'/shop'}
+          {title:'Hover Style 2',link:'/shop'},
+          {title:'Hover Style 3',link:'/shop'},
+          {title:'Hover Style 4',link:'/shop'}
         ]
       },
     ]
   },
-  // {
-  //   id:3,
-  //   package: ['M','L'],
-  //   link:'/shop',
-  //   title:'Products',
-  //   mega_menu:true,
-  //   product_menus:[
-  //     {
-  //       id:1,
-  //       title:'Shop Page',
-  //       link:'/shop',
-  //       dropdown_menus:[
-  //         {title:'Only Categories',link:'/shop-categories'},
-  //         // {title:'Shop Grid with Sidebar',link:'/shop-filter-offcanvas'},
-  //         // {title:'Shop Grid',link:'/shop'},
-  //         // {title:'Categories',link:'/shop-categories'},
-  //         // {title:'Shop List',link:'/shop-list'},
-  //         // {title:'Product Details',link:'/product-details'},
-  //       ]
-  //     },
-  //     {
-  //       id:2,
-  //       title:'Products',
-  //       link:'/shop',
-  //       dropdown_menus:[
-  //         {title:'Product Simple',link:'/product-details'},
-  //         // {title:'With Video',link:'/product-details-video'},
-  //         // {title:'With Countdown Timer',link:'/product-details-countdown'},
-  //         // {title:'Variations Swatches',link:'/product-details-swatches'},
-  //         // {title:'List View',link:'/product-details-list'},
-  //         // {title:'Details Gallery',link:'/product-details-gallery'},
-  //         // {title:'With Slider',link:'/product-details-slider'},
-  //       ]
-  //     },
-  //     {
-  //       id:3,
-  //       title:'eCommerce',
-  //       link:'/shop',
-  //       dropdown_menus:[
-  //         {title:'Shopping Cart',link:'/cart'},
-  //         // {title:'Track Your Order',link:'/order'},
-  //         // {title:'Compare',link:'/compare'},
-  //         // {title:'Wishlist',link:'/wishlist'},
-  //         // {title:'Checkout',link:'/checkout'},
-  //         // {title:'My account',link:'/profile'}
-  //       ]
-  //     },
-  //     {
-  //       id:4,
-  //       title:'More Pages',
-  //       link:'/shop',
-  //       dropdown_menus:[
-  //         {title:'About',link:'/about'},
-  //         // {title:'Login',link:'/login'},
-  //         // {title:'Register',link:'/register'},
-  //         // {title:'Forgot Password',link:'/forgot'},
-  //         // {title:'404 Error',link:'/404'}
-  //       ]
-  //     },
-  //   ]
-  // },
+  {
+    id:3,
+    link:'/shop',
+    title:'Products',
+    mega_menu:true,
+    product_menus:[
+      {
+        id:1,
+        title:'Shop Page',
+        link:'/shop',
+        dropdown_menus:[
+          {title:'Only Categories',link:'/shop-categories'},
+          {title:'Shop Grid with Sidebar',link:'/shop-filter-offcanvas'},
+          {title:'Shop Grid',link:'/shop'},
+          {title:'Categories',link:'/shop-categories'},
+          {title:'Shop List',link:'/shop-list'},
+          {title:'Product Details',link:'/product-details'},
+        ]
+      },
+      {
+        id:2,
+        title:'Products',
+        link:'/shop',
+        dropdown_menus:[
+          {title:'Product Simple',link:'/product-details'},
+          {title:'With Video',link:'/product-details-video'},
+          {title:'With Countdown Timer',link:'/product-details-countdown'},
+          {title:'Variations Swatches',link:'/product-details-swatches'},
+          {title:'List View',link:'/product-details-list'},
+          {title:'Details Gallery',link:'/product-details-gallery'},
+          {title:'With Slider',link:'/product-details-slider'},
+        ]
+      },
+      {
+        id:3,
+        title:'eCommerce',
+        link:'/shop',
+        dropdown_menus:[
+          {title:'Shopping Cart',link:'/cart'},
+          {title:'Track Your Order',link:'/order'},
+          {title:'Compare',link:'/compare'},
+          {title:'Wishlist',link:'/wishlist'},
+          {title:'Checkout',link:'/checkout'},
+          {title:'My account',link:'/profile'}
+        ]
+      },
+      {
+        id:4,
+        title:'More Pages',
+        link:'/shop',
+        dropdown_menus:[
+          {title:'About',link:'/about'},
+          {title:'Login',link:'/login'},
+          {title:'Register',link:'/register'},
+          {title:'Forgot Password',link:'/forgot'},
+          {title:'404 Error',link:'/404'}
+        ]
+      },
+    ]
+  },
   {
     id:4,
-    package: ['M','L'],
-    link:'/about',
-    title:'About',
+    link:'/coupons',
+    title:'Coupons',
   },
   {
     id:5,
-    package: ['M','L'],
     link:'/blog',
     title:'Blog',
-    drop_down:false,
+    drop_down:true,
     dropdown_menus:[
       {title:'Blog Standard',link:'/blog'},
       {title:'Blog Grid',link:'/blog-grid'},

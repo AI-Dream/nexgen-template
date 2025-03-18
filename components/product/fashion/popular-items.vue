@@ -50,7 +50,7 @@
                   </a>
                 </div>
                 <div class="tp-category-content-2">
-                  <span>From ${{item.price.toFixed(2)}}</span>
+                  <span>From {{formatPrice(item.price)}}</span>
                   <h3 class="tp-category-title-2">
                     <nuxt-link :href="`/product-details/${item.id}`">{{item.title}}</nuxt-link>
                   </h3>

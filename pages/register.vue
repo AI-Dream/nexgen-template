@@ -1,13 +1,11 @@
 <template>
   <div>
       <!-- breadcrumb start -->
-      <!-- <breadcrumb-4 title="Register Now" subtitle="Register" :center="true" /> -->
+      <breadcrumb-4 title="Register Now" subtitle="Register" :center="true" />
       <!-- breadcrumb end -->
 
       <!-- register area start -->
-       <div class="mt-50">
-         <register-area/>
-       </div>
+      <register-area/>
       <!-- register area end -->
   </div>
 </template>

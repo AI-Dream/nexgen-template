@@ -1,5 +1,5 @@
 <template>
-  <div class="tp-header-category tp-category-menu tp-header-category-toggle">
+  <div class="tp-header-category tp-category-menu tp-header-category-toggle" ref="actionButtonRef">
     <button @click="handleActive" class="tp-category-menu-btn tp-category-menu-toggle">
       <span>
         <SvgDropdown />
@@ -7,7 +7,7 @@
       All Categories 
     </button>
     <Transition>
-      <nav v-if="isActive" class="tp-category-menu-content">
+      <nav v-if="isActive" class="tp-category-menu-content" :class="{ active: isActive }">
         <ul>
           <li v-for="(item, i) in category_items" class="has-dropdown" :key="i">
             <a class="cursor-pointer" @click="handleParentCategory(item.parent)">
@@ -34,7 +34,6 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue';
 import category_data from "@/data/category-data";
 const router = useRouter();
 const category_items = category_data.filter(
@@ -56,6 +55,11 @@ const handleSubCategory = (value:string) => {
   router.push(`/shop?subCategory=${newCategory}`);
 }
 
+const closeAction = () => {
+    isActive.value = false
+};
+
+const actionButtonRef = useClickOutside(closeAction);
 </script>
 
 <style scoped>

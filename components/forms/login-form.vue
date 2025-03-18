@@ -5,7 +5,7 @@
         <div class="tp-login-input">
           <input
             id="email"
-            type="text"
+            type="email"
             placeholder="shofy@mail.com"
             v-bind="email"
           />
@@ -55,19 +55,14 @@
       </div>
     </div>
     <div class="tp-login-bottom">
-      <button type="submit" class="tp-login-btn w-100">{{ loginStatus ? 'Logging in...' : 'Login' }}</button>
+      <button type="submit" class="tp-login-btn w-100">Login</button>
     </div>
   </form>
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from "@/pinia/useUserStore";
 import { useForm } from "vee-validate";
-import { toast } from "vue3-toastify";
 import * as yup from "yup";
-
-const credentials = useCredential()
-const { setUserData } = useUserStore();
 
 let showPass = ref<boolean>(false);
 
@@ -78,44 +73,15 @@ interface IFormValues {
 const { errors, handleSubmit, defineInputBinds, resetForm } =
   useForm<IFormValues>({
     validationSchema: yup.object({
-      email: yup.string().required().label("Email"),
+      email: yup.string().required().email().label("Email"),
       password: yup.string().required().min(6).label("Password"),
     }),
   });
 
 const onSubmit = handleSubmit((values) => {
-  handleLogin(values);
+  alert(JSON.stringify(values, null, 2));
+  resetForm();
 });
-
-const loginStatus = ref(false)
-
-const handleLogin = async (values: IFormValues) => {
-  if (loginStatus.value === false) {
-    await $fetch(`${credentials.value.api_url}/api/backend/api/erp/login`,{
-      method: 'POST',
-      headers: credentials.value.api_key,
-      body: {
-        username: values.email,
-        password: values.password,
-      },
-      onRequest(){
-        loginStatus.value = true;
-      },
-      onResponse({response}){
-        loginStatus.value = false
-        if (response._data.code === 200) {
-          localStorage.setItem('accessToken', response._data.data.access_token);
-          setUserData(response._data.data)
-          navigateTo('/')        
-        } else if (response._data.code === 400 && response._data.message === 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง') {
-          toast.error('อีเมลหรือหรัสผ่านไม่ถูกต้อง');
-        } else {
-          toast.error('เกิดข้อผิดพลาดลองใหม่อีกครั้งภายหลัง');
-        }
-      }
-    })
-  }
-}
 
 const togglePasswordVisibility = () => {
   showPass.value = !showPass.value;

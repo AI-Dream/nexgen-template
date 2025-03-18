@@ -57,19 +57,12 @@
                   </h3>
                   <div class="tp-featured-price-wrapper">
                     <div v-if="item.discount > 0">
-                      <span class="tp-featured-price old-price">${{ item.price }}</span>
+                      <span class="tp-featured-price old-price">{{ formatPrice(item.price,false) }}</span>
                       <span class="tp-featured-price new-price">
-                        ${{
-                          (
-                            Number(item.price) -
-                            (Number(item.price) * Number(item.discount)) / 100
-                          ).toFixed(2)
-                        }}
+                        {{formatPrice((Number(item.price) - (Number(item.price) * Number(item.discount)) / 100))}}
                       </span>
                     </div>
-                    <span v-else class="tp-featured-price new-price"
-                      >${{ item.price.toFixed(2) }}</span
-                    >
+                    <span v-else class="tp-featured-price new-price">{{ formatPrice(item.price) }}</span>
                   </div>
                   <div class="tp-product-rating-icon tp-product-rating-icon-2">
                     <span><i class="fa-solid fa-star"></i></span>
@@ -79,9 +72,7 @@
                     <span><i class="fa-solid fa-star"></i></span>
                   </div>
                   <div class="tp-featured-btn">
-                    <nuxt-link :href="`/product-details/${item.id}`"
-                      class="tp-btn tp-btn-border tp-btn-border-sm"
-                    >
+                    <nuxt-link :href="`/product-details/${item.id}`" class="tp-btn tp-btn-border tp-btn-border-sm">
                       Shop Now <svg-right-arrow />
                     </nuxt-link>
                   </div>

@@ -60,7 +60,7 @@
 
       <div class="tp-product-price-inner-4">
         <div class="tp-product-price-wrapper-4">
-          <span class="tp-product-price-4">${{ item.price.toFixed(2) }}</span>
+          <span class="tp-product-price-4">{{ formatPrice(item.price) }}</span>
         </div>
         <div class="tp-product-price-add-to-cart">
           <button

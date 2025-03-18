@@ -15,7 +15,7 @@
               </h3>
               <p>{{item.subtitle}}</p>
               <div class="tp-featured-price-3">
-                <span>Save ${{item.save.toFixed(2)}}</span>
+                <span>Save {{formatPrice(item.save)}}</span>
               </div>
             </div>
           </div>

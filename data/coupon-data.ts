@@ -16,7 +16,7 @@ const coupon_data:ICoupon[] = [
     title: "SUMMER Vacation",
     logo: "https://i.ibb.co/ThxGY6N/clothing-13.png",
     couponCode: "SUMMER23",
-    endTime: "2025-03-22T00:56:00.000Z",
+    endTime: "2025-11-22T00:56:00.000Z",
     discountPercentage: 8,
     minimumAmount: 400,
     productType: "fashion"
@@ -26,7 +26,7 @@ const coupon_data:ICoupon[] = [
     title: "Paper On Demand",
     logo: "https://i.ibb.co/h9PYFHJ/lip-liner-2.png",
     couponCode: "PAPER12",
-    endTime: "2025-05-01T20:19:00.000Z",
+    endTime: "2025-12-01T20:19:00.000Z",
     discountPercentage: 14,
     minimumAmount: 500,
     productType: "beauty"
@@ -36,7 +36,7 @@ const coupon_data:ICoupon[] = [
     title: "Fifty Fifty",
     logo: "https://i.ibb.co/rvmPWxc/bracelet-5.png",
     couponCode: "FIF50",
-    endTime: "2025-05-01T20:19:00.000Z",
+    endTime: "2025-12-01T20:19:00.000Z",
     discountPercentage: 10,
     minimumAmount: 300,
     productType: "jewelry"

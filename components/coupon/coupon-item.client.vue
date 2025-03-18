@@ -56,7 +56,7 @@
             <p>
               *This coupon code will apply on
               <span class="text-capitalize">{{coupon.productType}}</span> and when you shopping more than
-              <span>${{ coupon.minimumAmount }}</span>
+              <span>{{ formatPrice(coupon.minimumAmount,false) }}</span>
             </p>
           </div>
         </div>

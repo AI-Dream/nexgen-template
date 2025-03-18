@@ -45,16 +45,10 @@
                   v-if="item.discount > 0 && item.orderQuantity"
                   class="cartmini__price"
                 >
-                  ${{
-                    (
-                      (Number(item.price) -
-                        (Number(item.price) * Number(item.discount)) / 100) *
-                      item.orderQuantity
-                    ).toFixed(2)
-                  }}
+                  {{formatPrice((Number(item.price) - (Number(item.price) * Number(item.discount)) / 100) * item.orderQuantity)}}
                 </span>
                 <span v-else class="cartmini__price">
-                  ${{item.orderQuantity && (item.price * item.orderQuantity).toFixed(2)}}
+                  {{formatPrice(item.price * (item.orderQuantity ?? 0))}}
                 </span>
                 <span class="cartmini__quantity">{{ " " }}x{{ item.orderQuantity }}</span>
               </div>
@@ -82,7 +76,7 @@
       <div v-if="cartStore.cart_products.length > 0" class="cartmini__checkout">
         <div class="cartmini__checkout-title mb-30">
           <h4>Subtotal:</h4>
-          <span>${{ cartStore.totalPriceQuantity.total.toFixed(2) }}</span>
+          <span>{{ formatPrice(cartStore.totalPriceQuantity.total) }}</span>
         </div>
         <div class="cartmini__checkout-btn">
           <nuxt-link

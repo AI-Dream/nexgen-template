@@ -11,13 +11,13 @@
           <!-- item list -->
           <li v-for="item in cartStore.cart_products" :key="item.id" class="tp-order-info-list-desc">
               <p>{{item.title}} <span> x {{item.orderQuantity}}</span></p>
-              <span>${{item.price.toFixed(2)}}</span>
+              <span>{{formatPrice(item.price)}}</span>
           </li>
 
           <!-- subtotal -->
           <li class="tp-order-info-list-subtotal">
               <span>Subtotal</span>
-              <span>${{cartStore.totalPriceQuantity.total.toFixed(2)}}</span>
+              <span>{{formatPrice(cartStore.totalPriceQuantity.total)}}</span>
           </li>
 
           <!-- shipping -->
@@ -26,11 +26,11 @@
               <div class="tp-order-info-list-shipping-item d-flex flex-column align-items-end">
                 <span>
                     <input id="flat_rate" type="radio" name="shipping">
-                    <label @click="handleShippingCost(20)" for="flat_rate">Flat rate: <span>$20.00</span></label>
+                    <label @click="handleShippingCost(20)" for="flat_rate">Flat rate: <span>{{formatPrice(20)}}</span></label>
                 </span>
                 <span>
                     <input id="local_pickup" type="radio" name="shipping">
-                    <label @click="handleShippingCost(25)" for="local_pickup">Local pickup: <span>$25.00</span></label>
+                    <label @click="handleShippingCost(25)" for="local_pickup">Local pickup: <span>{{formatPrice(25)}}</span></label>
                 </span>
                 <span>
                     <input id="free_shipping" type="radio" name="shipping">
@@ -42,7 +42,7 @@
           <!-- total -->
           <li class="tp-order-info-list-total">
               <span>Total</span>
-              <span>${{(cartStore.totalPriceQuantity.total + shipCost).toFixed(2)}}</span>
+              <span>{{formatPrice(cartStore.totalPriceQuantity.total + shipCost)}}</span>
           </li>
         </ul>
     </div>

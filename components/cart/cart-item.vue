@@ -11,7 +11,7 @@
       <nuxt-link :href="`/product-details/${item.id}`">{{item.title}}</nuxt-link>
     </td>
     <!-- price -->
-    <td class="tp-cart-price"><span>${{item.price.toFixed(2)}}</span></td>
+    <td class="tp-cart-price"><span>{{formatPrice(item.price)}}</span></td>
     <!-- quantity -->
     <td class="tp-cart-quantity">
       <div class="tp-product-quantity mt-10 mb-10">

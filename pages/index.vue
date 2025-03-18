@@ -1,18 +1,57 @@
 <template>
   <div>
-    <nuxt-layout name="default">
-      <div v-if="newProductStatus === false" >
-        <hero-banner-one />
-        <product-electronics-top-items 
-          :newProduct="newProduct" 
-          :newProductStatus="newProductStatus"
-        />
-        <banner-area-2 />
-        <blog-electronic/>
-      </div>
-      <div v-else>
-        <page-loading></page-loading>
-      </div>
+    <nuxt-layout name="layout-one">
+      <!-- hero banner start -->
+      <hero-banner-one />
+      <!-- hero banner end -->
+
+      <!-- category start -->
+      <categories-electronic />
+      <!-- category end -->
+
+      <!-- feature area start -->
+      <feature-one />
+      <!-- feature area end -->
+
+      <!-- product area start -->
+      <product-electronics-top-items />
+      <!-- product area end -->
+
+      <!-- banner area start -->
+      <banner-area />
+      <!-- banner area en -->
+
+      <!-- offer product start -->
+      <product-electronics-offer-items />
+      <!-- offer product end -->
+
+      <!-- product gadget area start -->
+      <product-electronics-gadget-items />
+      <!-- product gadget area end -->
+
+      <!-- product banner start -->
+      <banner-area-2 />
+      <!-- product banner end -->
+
+      <!-- product new arrivals area start -->
+      <product-electronics-new-arrivals />
+      <!-- product new arrivals area end -->
+
+      <!-- product sm items start -->
+      <product-electronics-sm-items />
+      <!-- product sm items end -->
+
+      <!-- blog item start -->
+      <blog-electronic/>
+      <!-- blog item end -->
+
+      <!-- instagram area start -->
+      <instagram-area-1/>
+      <!-- instagram area end -->
+
+      <!-- subscribe area start -->
+      <subscribe-1/>
+      <!-- subscribe area end -->
     </nuxt-layout>
   </div>
 </template>
@@ -21,45 +60,5 @@
 definePageMeta({
   layout: false,
 });
-
-const credentials = useCredential();
-const newProduct = ref(null);
-const newProductStatus = ref(true);
-
-const getNewProduct = async () => {
-    await $fetch(`${credentials.value.api_url}/api/backend_2/search/product/filter`, {
-      method: 'POST',
-      body: {
-        "role_user": "ext_buyer",
-        "company_id": "-1",
-        "limit": 4,
-        "page": 1,
-        "category": "",
-        "seller_shop_id": 86,
-        "orderBy": "",
-        "status_product": ""
-      },
-      onRequest(){
-        newProductStatus.value = true;
-      },
-      onResponse({response}){
-        newProductStatus.value = false;
-        if (response._data){
-          newProduct.value = response._data
-        }
-      },
-      onRequestError({error}){
-        console.error(error);
-        newProductStatus.value = false;
-      },
-      onResponseError({error}){
-        console.error(error)
-        newProductStatus.value = false;
-      }
-    })
-}
-
-onBeforeMount(() => {
-  getNewProduct();
-})
+useSeoMeta({ title: "Shofy - Multipurpose eCommerce Vue Nuxt 3 Template" });
 </script>

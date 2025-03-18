@@ -8,7 +8,7 @@
       <div class="row">
         <div v-if="!shop_right_side && !shop_no_side" class="col-xl-3 col-lg-4">
           <!-- shop sidebar start -->
-          <shop-sidebar :shop_full="full_width" :shop_1600="shop_1600" />
+          <shop-sidebar />
           <!-- shop sidebar end -->
         </div>
         <div :class="`${shop_no_side?'col-xl-12':'col-xl-9 col-lg-8'}`">
@@ -103,7 +103,7 @@
 
         <div v-if="shop_right_side && !shop_no_side" class="col-xl-3 col-lg-4">
           <!-- shop sidebar start -->
-          <shop-sidebar :shop_right="shop_right_side" />
+          <shop-sidebar />
           <!-- shop sidebar end -->
         </div>
 
@@ -113,7 +113,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
 import product_data from "@/data/product-data";
 import { useProductFilterStore } from "@/pinia/useProductFilterStore";
 import { type IProduct } from "@/types/product-type";

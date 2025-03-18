@@ -52,7 +52,7 @@
               <div class="tp-cart-checkout-top d-flex align-items-center justify-content-between">
                   <span class="tp-cart-checkout-top-title">Subtotal</span>
                   <span class="tp-cart-checkout-top-price">
-                    ${{cartStore.totalPriceQuantity.total.toFixed(2)}}
+                    {{formatPrice(cartStore.totalPriceQuantity.total)}}
                   </span>
               </div>
               <div class="tp-cart-checkout-shipping">
@@ -60,11 +60,11 @@
                   <div class="tp-cart-checkout-shipping-option-wrapper">
                     <div class="tp-cart-checkout-shipping-option">
                         <input id="flat_rate" type="radio" name="shipping">
-                        <label @click="handleShippingCost(20)" for="flat_rate">Flat rate: <span>$20.00</span></label>
+                        <label @click="handleShippingCost(20)" for="flat_rate">Flat rate: <span>{{ formatPrice(20) }}</span></label>
                     </div>
                     <div class="tp-cart-checkout-shipping-option">
                         <input id="local_pickup" type="radio" name="shipping">
-                        <label @click="handleShippingCost(25)" for="local_pickup">Local pickup: <span> $25.00</span></label>
+                        <label @click="handleShippingCost(25)" for="local_pickup">Local pickup: <span> {{ formatPrice(25) }}</span></label>
                     </div>
                     <div class="tp-cart-checkout-shipping-option">
                         <input id="free_shipping" type="radio" name="shipping">
@@ -74,7 +74,7 @@
               </div>
               <div class="tp-cart-checkout-total d-flex align-items-center justify-content-between">
                   <span>Total</span>
-                  <span>${{(cartStore.totalPriceQuantity.total + shipCost).toFixed(2)}}</span>
+                  <span>{{formatPrice(cartStore.totalPriceQuantity.total + shipCost)}}</span>
               </div>
               <div class="tp-cart-checkout-proceed">
                   <nuxt-link href="/checkout" class="tp-cart-checkout-btn w-100">Proceed to Checkout</nuxt-link>

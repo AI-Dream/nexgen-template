@@ -53,15 +53,11 @@
           <div class="row align-items-center">
             <div class="col-xl-5 col-lg-6 col-md-6">
               <div class="tp-slider-content p-relative z-index-1">
-                <span
-                  >{{ item.pre_title.text }}
-                  <b>${{ item.pre_title.price.toFixed(2) }}</b></span
-                >
+                <span>{{ item.pre_title.text }} <b>{{ formatPrice(item.pre_title.price) }}</b></span>
                 <h3 class="tp-slider-title">{{ item.title }}</h3>
                 <p>
                   {{ item.subtitle.text_1 }}
-                  <span
-                    >-{{ item.subtitle.percent }}%
+                  <span>-{{ item.subtitle.percent }}%
                     <SvgOfferLine />
                   </span>
                   {{ item.subtitle.text_2 }}
@@ -163,4 +159,5 @@ const handleActiveIndex = (index: number) => {
     isActive.value = false;
   }
 };
+
 </script>

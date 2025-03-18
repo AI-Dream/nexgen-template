@@ -19,11 +19,11 @@
             </div>
             <div class="tp-login-option">
               <!-- social login start -->
-              <!-- <login-social /> -->
+              <login-social />
               <!-- social login end -->
-              <!-- <div class="tp-login-mail text-center mb-40">
+              <div class="tp-login-mail text-center mb-40">
                 <p>or Sign in with <a href="#">Email</a></p>
-              </div> -->
+              </div>
               <!-- form start -->
               <forms-login-form />
               <!-- form end -->

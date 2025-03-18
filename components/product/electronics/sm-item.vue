@@ -26,9 +26,9 @@
       </div>
       <div class="tp-product-price-wrapper">
         <span v-if="item.discount > 0" class="tp-product-price">
-          ${{(Number(item.price) - (Number(item.price) * Number(item.discount)) / 100).toFixed(2)}}
+          {{formatPrice((Number(item.price) - (Number(item.price) * Number(item.discount)) / 100))}}
         </span>
-        <span v-else class="tp-product-price">${{item.price.toFixed(2)}}</span>
+        <span v-else class="tp-product-price">{{formatPrice(item.price)}}</span>
       </div>
     </div>
   </div>

@@ -1,14 +1,14 @@
 <template>
   <div :class="`${offer_style ? 'tp-product-offer-item' : 'mb-25'} tp-product-item transition-3`">
     <div class="tp-product-thumb p-relative fix m-img">
-      <nuxt-link :href="`/product-details/${item.id}`" style="width: 300px; height: 300px; overflow: hidden;">
-        <img :src="item.images_URL[0]" alt="product-electronic" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;"/>
+      <nuxt-link :href="`/product-details/${item.id}`">
+        <img :src="item.img" alt="product-electronic" />
       </nuxt-link>
 
       <!-- product badge -->
-      <!-- <div class="tp-product-badge">
+      <div class="tp-product-badge">
         <span v-if="item.status === 'out-of-stock'" class="product-hot">out-of-stock</span>
-      </div> -->
+      </div>
 
       <!-- product action -->
       <div class="tp-product-action">
@@ -17,9 +17,7 @@
             v-if="!isItemInCart(item)"
             @click="cartStore.addCartProduct(item)"
             type="button"
-            :class="`tp-product-action-btn tp-product-add-cart-btn ${
-              isItemInCart(item) ? 'active' : ''
-            }`"
+            :class="`tp-product-action-btn tp-product-add-cart-btn ${isItemInCart(item) ? 'active' : ''}`"
           >
             <svg-add-cart />
             <span class="tp-product-tooltip">Add to Cart</span>
@@ -59,10 +57,12 @@
     <!-- product content -->
     <div class="tp-product-content">
       <div class="tp-product-category">
-        <nuxt-link :href="`/product-details/${item.id}`"></nuxt-link>
+        <nuxt-link :href="`/product-details/${item.id}`">{{ item.category.name }}</nuxt-link>
       </div>
       <h3 class="tp-product-title">
-        <nuxt-link :href="`/product-details/${item.id}`" class="text-truncate" style="display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ item.name }}</nuxt-link>
+        <nuxt-link :href="`/product-details/${item.id}`">
+          {{ item.title }}
+        </nuxt-link>
       </h3>
       <div class="tp-product-rating d-flex align-items-center">
         <div class="tp-product-rating-icon">
@@ -73,17 +73,36 @@
           <span><i class="fa-solid fa-star-half-stroke"></i></span>
         </div>
         <div class="tp-product-rating-text">
-          {{ item.review || '15' }}
+          <span>({{item.reviews?.length}} Review)</span>
         </div>
       </div>
       <div class="tp-product-price-wrapper">
-        <div v-if="item.id % 2 === 0">
-          <span class="tp-product-price old-price">{{ item.real_price }}฿</span>
+        <div v-if="item.discount > 0">
+          <span class="tp-product-price old-price">{{ formatPrice(item.price,false) }}</span>
           <span class="tp-product-price new-price">
-            {{ (item.real_price * 0.01).toFixed(2) }}฿
+            {{formatPrice((Number(item.price) - (Number(item.price) * Number(item.discount)) / 100))}}
           </span>
         </div>
-        <span v-else class="tp-product-price new-price">{{ item.net_price }}฿</span>
+        <span v-else class="tp-product-price new-price">{{ formatPrice(item.price) }}</span>
+      </div>
+
+      <div class="tp-product-countdown" v-if="offer_style">
+        <div class="tp-product-countdown-inner">
+          <ul>
+            <li>
+              <span>{{ timer.days }}</span> Day
+            </li>
+            <li>
+              <span>{{ timer.hours }}</span> Hrs
+            </li>
+            <li>
+              <span>{{ timer.minutes }}</span> Min
+            </li>
+            <li>
+              <span>{{ timer.seconds }}</span> Sec
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -93,17 +112,25 @@
 import { useCartStore } from "@/pinia/useCartStore";
 import { useWishlistStore } from "@/pinia/useWishlistStore";
 import { useUtilityStore } from "@/pinia/useUtilityStore";
-import { type NProduct } from "@/types/product-type";
+import { type IProduct } from "@/types/product-type";
+import { useTimer, type UseTimer } from "vue-timer-hook";
 
-const props = defineProps<{ item: NProduct; offer_style?: boolean }>();
+const props = defineProps<{ item: IProduct; offer_style?: boolean }>();
 const cartStore = useCartStore();
 const wishlistStore = useWishlistStore();
 const utilityStore = useUtilityStore();
 
-function isItemInWishlist(product: NProduct) {
-  return wishlistStore.wishlists.some((prd) => Number(prd.id) === product.id);
+function isItemInWishlist(product: IProduct) {
+  return wishlistStore.wishlists.some((prd) => prd.id === product.id);
 }
-function isItemInCart(product: NProduct) {
-  return cartStore.cart_products.some((prd) => Number(prd.id) === product.id);
+function isItemInCart(product: IProduct) {
+  return cartStore.cart_products.some((prd:IProduct) => prd.id === product.id);
+}
+
+let timer: UseTimer;
+if (props.item.offerDate) {
+  const endTime = new Date(props.item.offerDate.endDate);
+  const endTimeMs = endTime.getTime();
+  timer = useTimer(endTimeMs);
 }
 </script>
