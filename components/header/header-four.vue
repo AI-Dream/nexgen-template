@@ -9,7 +9,7 @@
               <div class="logo">
                 <nuxt-link href="/">
                   <img class="logo-light" src="/img/logo/logo-white.svg" alt="logo">
-                  <img class="logo-dark" src="/img/logo/logo.svg" alt="logo">
+                  <img class="logo-dark" src="/img/logo/nex-iservice-logo.png" alt="logo" style="width: 250px;">
                 </nuxt-link>
               </div>
             </div>
@@ -38,7 +38,7 @@
                 <div class="tp-header-action-item d-none d-sm-block">
                   <button @click="cartStore.handleCartOffcanvas" type="button" class="tp-header-action-btn cartmini-open-btn">
                     <svg-cart-bag />
-                    <span class="tp-header-action-badge">{{ cartStore.totalPriceQuantity.quantity }}</span>
+                    <span class="tp-header-action-badge">{{ cartStore.cart_products.length }}</span>
                   </button>
                 </div>
                 <div class="tp-header-action-item d-lg-none">

@@ -29,7 +29,7 @@
             <div class="col-xl-2 col-lg-2 col-md-4 col-6">
               <div class="logo">
                 <nuxt-link href="/">
-                  <img src="/img/logo/logo.svg" alt="logo" />
+                  <img src="/img/logo/nex-iservice-logo.png" alt="logo" style="width: 250px;"/>
                 </nuxt-link>
               </div>
             </div>
@@ -93,7 +93,7 @@
             <div class="col-xl-3 col-lg-3 col-md-3 col-6">
               <div class="logo">
                 <nuxt-link href="/">
-                  <img src="/img/logo/logo.svg" alt="logo">
+                  <img src="/img/logo/nex-iservice-logo.png" alt="logo" style="width: 250px;">
                 </nuxt-link>
               </div>
             </div>
@@ -122,7 +122,7 @@
                 <div class="tp-header-action-item">
                   <button @click="cartStore.handleCartOffcanvas" type="button" class="tp-header-action-btn cartmini-open-btn">
                     <svg-cart-bag />
-                    <span class="tp-header-action-badge">{{ cartStore.totalPriceQuantity.quantity }}</span>
+                    <span class="tp-header-action-badge">{{ cartStore.cart_products.length }}</span>
                   </button>
                 </div>
                 <div class="tp-header-action-item d-lg-none">

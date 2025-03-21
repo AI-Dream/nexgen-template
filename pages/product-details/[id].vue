@@ -1,33 +1,31 @@
 <template>
-  <div v-if="product">
+  <div v-if="productStore.product">
       <!-- breadcrumb start -->
-      <product-details-breadcrumb :product="product" />
+      <product-details-breadcrumb :product="productStore.product" />
       <!-- breadcrumb end -->
 
       <!-- product details area start -->
-      <product-details-area :product="product" />
+      <product-details-area :product="productStore.product" />
       <!-- product details area end -->
 
       <!-- related products start -->
-      <product-related :product-id="product.id" :category="product.category.name" />
+      <product-related :product-id="productStore.product.id" :category="productStore.product.category.name" />
       <!-- related products end -->
+  </div>
+  <div v-show="productStore.isLoading">
+    <PageLoading></PageLoading>
   </div>
 </template>
 
 <script setup lang="ts">
-import product_data from '@/data/product-data';
-import { useProductStore } from '@/pinia/useProductStore';
-import { type IProduct } from '@/types/product-type';
-const route = useRoute()
+useSeoMeta({ title: "Product Details Page" });
 
+import { useProductStore } from '@/pinia/useProductStore';
+
+const route = useRoute()
 const productStore = useProductStore();
 
-let product = ref<IProduct | undefined>();
-useSeoMeta({ title: "Product Details Page" });
 onMounted(() => {
-  product.value = product_data.find(b => b.id === route.params.id);
-  if(product.value?.img){
-    productStore.activeImg  = product.value.img;
-  }
+  productStore.getProductDetail(route.params.id as any)
 });
 </script>

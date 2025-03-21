@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :style="`margin-top: ${isSticky ? '70px' : '0'}`">
     <div :class="`tp-header-area tp-header-style-${style_2 ? 'primary' : 'darkRed'} tp-header-height`">
       <!-- header top start  -->
       <div class="tp-header-top-2 p-relative z-index-11 tp-header-top-border d-none d-md-block">
@@ -42,7 +42,7 @@
               <div class="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6">
                 <div class="logo">
                   <nuxt-link href="/">
-                    <img src="/img/logo/logo.svg" alt="logo">
+                    <img src="/img/logo/nex-iservice-logo.png" alt="logo" style="width: 150px;">
                   </nuxt-link>
                 </div>
               </div>
@@ -80,7 +80,7 @@
                     <div class="tp-header-action-item">
                       <button @click="cartStore.handleCartOffcanvas" class="tp-header-action-btn cartmini-open-btn">
                         <svg-cart-bag />
-                        <span class="tp-header-action-badge">{{ cartStore.totalPriceQuantity.quantity }}</span>
+                        <span class="tp-header-action-badge">{{ cartStore.cart_products.length }}</span>
                       </button>
                     </div>
                     <div class="tp-header-action-item tp-header-hamburger mr-20 d-xl-none">
