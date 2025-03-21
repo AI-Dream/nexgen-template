@@ -1,5 +1,7 @@
 <template>
-  <NuxtLayout>
+  <PageLoading v-show="userStore.loading"/>
+  <NuxtLayout v-if="!userStore.loading">
+    <NuxtLoadingIndicator/>
     <NuxtPage />
     <modal-product/>
   </NuxtLayout>
@@ -7,6 +9,7 @@
 
 <script setup lang="ts">
 import { useProductFilterStore } from './pinia/useProductFilterStore';
+import { useUserStore } from './pinia/useUserStore';
 import { useUtilityStore } from './pinia/useUtilityStore';
 
 const route = useRoute();
@@ -18,4 +21,6 @@ watch(() => route.path, () => {
   prdFilterStore.handleResetFilter();
   utilsStore.removeBackdrop();
 })
+
+const userStore = useUserStore()
 </script>

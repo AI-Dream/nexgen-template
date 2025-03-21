@@ -544,6 +544,8 @@ input[type=color] {
 
 .m-img img {
   max-width: 100%;
+  width: 300px;
+  height: 300px;
 }
 
 .fix {

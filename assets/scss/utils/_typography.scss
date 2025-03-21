@@ -1,22 +1,29 @@
 
 // font url
-
+@font-face {
+    font-family: 'SupermarketThai';
+    src: url('/assets/fonts/NotoSansThai-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0E00-0E7F;
+}
+  
 $font-url: 'https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Jost:wght@300;400;500;600;700&family=Oregano&family=Roboto:wght@300;400;500;700;900&display=swap';
 
 // font family
 $font-family: (
     'ff': (
-        'body': "'Jost', sans-serif",
-        'heading': "'Jost', sans-serif",
-        'p': "'Jost', sans-serif",
-        'jost': "'Jost', sans-serif",
+        'body': "'SupermarketThai', 'Jost', sans-serif",
+        'heading': "'SupermarketThai', 'Jost', sans-serif",
+        'p': "'SupermarketThai', 'Jost', sans-serif",
+        'jost': "'SupermarketThai', 'Jost', sans-serif",
         'fontawesome': '"Font Awesome 6 Pro"',
-        'roboto': "'Roboto', sans-serif",
-        'oregano': "'Oregano', cursive",
-        'charm': "'Charm', cursive",
+        'roboto': "'SupermarketThai', 'Roboto', sans-serif",
+        'oregano': "'SupermarketThai', 'Oregano', cursive",
+        'charm': "'SupermarketThai', 'Charm', cursive",
     )
 );
-
 
 
 // font size

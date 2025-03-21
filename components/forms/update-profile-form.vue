@@ -1,21 +1,41 @@
 <template>
   <form @submit.prevent="handleSubmit">
       <div class="row">
+        <div class="col-xxl-12 pb-25">
+          <div class="profile__main-inner d-flex flex-wrap align-items-center">
+            <div class="profile__main-thumb">
+              <img src="/img/users/user-2.jpg" alt="">
+              <div class="profile__main-thumb-edit">
+                  <input id="profile-thumb-input" class="profile-img-popup" type="file">
+                  <label for="profile-thumb-input"><i class="fa-light fa-camera"></i></label>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="col-xxl-6 col-md-6">
             <div class="profile__input-box">
               <div class="profile__input">
-                  <input type="text" placeholder="Enter your username" value="Shahnewaz Sakil">
+                  <input type="text" placeholder="Enter your username" :value="userStore.userData.first_name_th">
                   <span>
                     <svg-user-3/>
                   </span>
               </div>
             </div>
         </div>
-        
         <div class="col-xxl-6 col-md-6">
             <div class="profile__input-box">
               <div class="profile__input">
-                  <input type="email" placeholder="Enter your email" value="example@mail.com">
+                  <input type="text" placeholder="Enter your username" :value="userStore.userData.last_name_th">
+                  <span>
+                    <svg-user-3/>
+                  </span>
+              </div>
+            </div>
+        </div>
+        <div class="col-xxl-6 col-md-6">
+            <div class="profile__input-box">
+              <div class="profile__input">
+                  <input type="text" placeholder="Enter your email" :value="userStore.userData.email">
                   <span>
                     <svg-email/>                                           
                   </span>
@@ -25,62 +45,10 @@
         <div class="col-xxl-6 col-md-6">
             <div class="profile__input-box">
               <div class="profile__input">
-                  <input type="text" placeholder="Enter username" value="shahnewzname">
-                  <span>
-                    <i class="fa-brands fa-facebook-f"></i>
-                  </span>
-              </div>
-            </div>
-        </div>
-        <div class="col-xxl-6 col-md-6">
-            <div class="profile__input-box">
-              <div class="profile__input">
-                  <input type="text" placeholder="Enter username" value="shahnewzname">
-                  <span><i class="fa-brands fa-twitter"></i></span>
-              </div>
-            </div>
-        </div>
-        <div class="col-xxl-6 col-md-6">
-            <div class="profile__input-box">
-              <div class="profile__input">
-                  <input type="text" placeholder="Enter your number" value="0123 456 7889">
+                  <input type="text" placeholder="Enter your number" :value="userStore.userData.phone">
                   <span>
                     <svg-phone-2/>                                                                                      
                   </span>
-              </div>
-            </div>
-        </div>
-        <div class="col-xxl-6 col-md-6">
-            <div class="profile__input-box">
-              <div class="profile__input">
-                  <ui-nice-select
-                  :options="[
-                    { value: 'Male', text: 'Male' },
-                    { value: 'Female', text: 'Female' },
-                    { value: 'Others', text: 'Others' }
-                  ]"
-                  name="Male"
-                  :default-current="0"
-                  @onChange="changeHandler"
-                />
-              </div>
-            </div>
-        </div>
-        <div class="col-xxl-12">
-            <div class="profile__input-box">
-              <div class="profile__input">
-                  <input type="text" placeholder="Enter your address" value="3304 Randall Drive">
-                  <span>
-                    <svg-address/>
-                  </span>
-              </div>
-            </div>
-        </div>
-
-        <div class="col-xxl-12">
-            <div class="profile__input-box">
-              <div class="profile__input">
-                  <textarea placeholder="Enter your bio">Hi there, this is my bio...</textarea>
               </div>
             </div>
         </div>
@@ -100,5 +68,9 @@ const changeHandler = (e: { value: string; text: string }, index: number) => {
 const handleSubmit = () => {
   console.log('submitted')
 }
+
+import { useUserStore } from '@/pinia/useUserStore';
+
+const userStore = useUserStore()
 </script>
 
