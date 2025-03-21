@@ -5,21 +5,21 @@
             <div class="col-md-6">
               <div class="profile__main-inner d-flex flex-wrap align-items-center">
                   <div class="profile__main-thumb">
-                    <img src="/img/users/user-10.jpg" alt="">
+                    <img src="/img/users/user-2.jpg" alt="">
                     <div class="profile__main-thumb-edit">
                         <input id="profile-thumb-input" class="profile-img-popup" type="file">
                         <label for="profile-thumb-input"><i class="fa-light fa-camera"></i></label>
                     </div>
                   </div>
                   <div class="profile__main-content">
-                    <h4 class="profile__main-title">Welcome Mr. Admin!</h4>
+                    <h4 class="profile__main-title">{{ userStore.userData.username }}</h4>
                     <p>You have <span>08</span> notifications</p>
                   </div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="profile__main-logout text-sm-end">
-                  <nuxt-link href="/login" class="tp-logout-btn">Logout</nuxt-link>
+                  <nuxt-link href="/login" class="tp-logout-btn" @click="userStore.logoutUser()">Logout</nuxt-link>
               </div>
             </div>
         </div>
@@ -76,5 +76,7 @@
 </template>
 
 <script setup lang="ts">
+import { useUserStore } from '@/pinia/useUserStore';
 
+const userStore = useUserStore()
 </script>

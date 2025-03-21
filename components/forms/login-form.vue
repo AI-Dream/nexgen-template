@@ -4,16 +4,16 @@
       <div class="tp-login-input-box">
         <div class="tp-login-input">
           <input
-            id="email"
-            type="email"
+            id="text"
+            type="text"
             placeholder="shofy@mail.com"
-            v-bind="email"
+            v-bind="username"
           />
         </div>
         <div class="tp-login-input-title">
-          <label for="email">Your Email</label>
+          <label for="text">Your Username</label>
         </div>
-        <err-message :msg="errors.email" />
+        <err-message :msg="errors.username" />
       </div>
       <div class="tp-login-input-box">
         <div class="p-relative">
@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="tp-login-bottom">
-      <button type="submit" class="tp-login-btn w-100">Login</button>
+      <button type="submit" class="tp-login-btn w-100">{{ userStore.loading ? 'Logging in...' : 'Login'}}</button>
     </div>
   </form>
 </template>
@@ -67,26 +67,29 @@ import * as yup from "yup";
 let showPass = ref<boolean>(false);
 
 interface IFormValues {
-  email?: string | null;
+  username?: string | null;
   password?: string | null;
 }
 const { errors, handleSubmit, defineInputBinds, resetForm } =
   useForm<IFormValues>({
     validationSchema: yup.object({
-      email: yup.string().required().email().label("Email"),
+      username: yup.string().required().label("Username"),
       password: yup.string().required().min(6).label("Password"),
     }),
   });
 
 const onSubmit = handleSubmit((values) => {
-  alert(JSON.stringify(values, null, 2));
-  resetForm();
+  userStore.loginUser(values)
 });
 
 const togglePasswordVisibility = () => {
   showPass.value = !showPass.value;
 };
 
-const email = defineInputBinds("email");
+const username = defineInputBinds("username");
 const password = defineInputBinds("password");
+
+import { useUserStore } from '@/pinia/useUserStore';
+
+const userStore = useUserStore()
 </script>
